@@ -1,27 +1,90 @@
-import gitGet from "@/lib/axiosConfig";
+import get from "@/lib/axiosConfig";
 import { useEffect, useState } from "react";
 
 import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
+import BarChart from "@/components/BarChart";
+import LineChart from "@/components/LineChart";
 
 const DataAnalysis = () => {
-        const [projects, setProjects] = useState([]);
-        const [error, setError] = useState("")
-    
-        useEffect(() => {
-            (async () => {
-                try {
-                    const res = await gitGet("/repos")
-                    console.log(res)
-                    setProjects(res)
-                } catch (error) {
-                    setError(error)
-                }
-            })();
-    
-        }, [])
-    
+    const [projects, setProjects] = useState([]);
+    const [stack, setStack] = useState([]);
+    const [commits, setCommits] = useState([]);
+
+    const [error, setError] = useState("");
+
+
+    const handleFetchProjs = async () => {
+        try {
+            const res = await get("/users/bald-cap/repos")
+            setProjects(res)
+        } catch (error) {
+            setError(error)
+        }
+    }
+
+    const handleFetchStack = async (repos) => {
+        try {
+            const res = await Promise.all(
+                repos.map(async ({ name }) => await get(`/repos/bald-cap/${name}/languages`))
+            );
+            setStack(res);
+        } catch (error) {
+            setError(error)
+        }
+    }
+
+    const handleFetchCommits = async(repos) => {
+        try {
+            const res = await Promise.all(
+                repos.map(async ({ name }) => {
+                    const commits = await get(`/repos/bald-cap/${name}/commits`);
+                    return aggregateCommitsByDay(commits);
+                })
+            );
+            setCommits(res.flat())
+        } catch (error) {
+            setError(error)
+        }
+    }
+
+    // Utility function to aggregate commit frequency by day
+    const aggregateCommitsByDay = (commits) => {
+        const frequency = {};
+
+        commits.forEach((commit) => {
+            const commitDate = new Date(commit?.commit?.author?.date).toISOString().split('T')[0]; // Format to YYYY-MM-DD
+            if (frequency[commitDate]) frequency[commitDate] += 1;
+            else frequency[commitDate] = 1;
+        });
+
+        // Convert the frequency object into an array of objects suitable for the line chart
+        const data = Object.keys(frequency).map((date) => ({
+            label: date,
+            value: frequency[date]
+        }));
+
+        return data;
+    };
+
+
+
+    useEffect(() => {
+        (async () => {
+            await handleFetchProjs()
+        })();
+    }, [])
+
+
+    useEffect(() => {
+        (async () => {
+            await handleFetchCommits(projects)
+            await handleFetchStack(projects)
+        })();
+    }, [projects])
+
+
     return (
         <>
             <Head>
@@ -34,17 +97,20 @@ const DataAnalysis = () => {
             <Navbar />
 
             <main>
-                <>
-                    {error && <p className="alert alert-danger">{error}</p>}
+                {error && <p className="alert alert-danger">{error}</p>}
 
-                    {projects &&
-                        <ul>
+                {projects &&
+                    <article className="card" style={{ width: "18rem" }}>
+                        <ul className="list-group list-group-flush">
                             {projects.map(({ name, id }) => (
-                                <li key={id}>{name}</li>
+                                <li className="list-group-item" key={id}>{name}</li>
                             ))}
                         </ul>
-                    }
-                </>
+                    </article>
+                }
+
+                {stack && <BarChart data={stack} />}
+                {commits && <LineChart data={commits}/>}
             </main>
 
             <footer>

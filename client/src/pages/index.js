@@ -22,12 +22,18 @@ export default function Home() {
 
       <Navbar />
 
-      <main style={{ color : "#161E34"}}>
-        <About />
+      <main style={{ color: "#161E34" }}>
+        <section className=" rounded p-3 border mx-3">
+          <About />
+        </section>
 
-        <Skills />
+        <section className="border border-info mx-3 rounded">
+          <Skills />
+        </section>
 
-        <Projects />
+        <section className="border border-secondary mx-3 rounded">
+          <Projects />
+        </section>
       </main>
 
       <Contact />

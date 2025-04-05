@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://api.github.com/users/bald-cap/"
+const API_URL = "https://api.github.com"
 const TOKEN = "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"
 
 const github = axios.create({
@@ -12,24 +12,23 @@ const github = axios.create({
 });
 
 const handleError = (error) => {
-    if (axios.isAxiosError(error)) {
-        if (error.response) return (
-            Promise.reject(error.response.data?.messsage || `Error status ${error.response.status}`)
-        );
-        else if (error.request) return Promise.reject("No reponse received");
-        else return Promise.reject(error.messsage);
-    } 
-    
-    return Promise.reject("Unexpected Error");
+    if (!axios.isAxiosError(error)) 
+        return Promise.reject("Unexpected Error");
+
+    if (error.response) return (
+        Promise.reject(error.response.data?.messsage || `Error status ${error.response.status}`)
+    );
+    else if (error.request) return Promise.reject("No reponse received");
+    else return Promise.reject(error.messsage);
 }
 
-const gitGet = async (endpoint, config = {}) => {
+const get = async (endpoint) => {
     try {
-        const data = await github.get(endpoint, config);
+        const data = await github.get(endpoint);
         return data.data
     } catch (error) {
         return handleError(error)
     }
 }
 
-export default gitGet;
+export default get;

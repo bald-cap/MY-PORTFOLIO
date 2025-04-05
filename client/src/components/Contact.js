@@ -19,7 +19,7 @@ const Contact = () => {
                     <div className="col">
                         <article className="d-flex flex-column align-items-center justify-content-center">
                             <p>My GitHub</p>
-                            <Link href="https://github.com/your-username" className="btn btn-outline-light">
+                            <Link href="https://github.com/bald-cap" className="btn btn-outline-light">
                                 <Image src={github} height={25} width={25} alt="GitHub" />
                             </Link>
                         </article>
@@ -28,7 +28,7 @@ const Contact = () => {
                     <div className="col">
                         <article className="d-flex flex-column align-items-center justify-content-center">
                             <p>My Gitlab</p>
-                            <Link href="https://gitlab.com/your-username" className="btn btn-outline-light">
+                            <Link href="https://migitlab.com/michael-kofi.nyanyuie" className="btn btn-outline-light">
                                 <Image src={gitlab} height={25} width={25} alt="Gitlab" />
                             </Link>
                         </article>

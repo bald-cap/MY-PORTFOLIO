@@ -1,10 +1,11 @@
 const About = () => {
 
     return (
-        <section className="container my-5">
-            <h2 className="mb-4">About Me</h2>
+        <section className="container border border-3 border-secondary rounded p-3"
+        id="about">
+            <h2 className="mb-4 text-center">About Me</h2>
             <p>
-                My academic journey began at the <a href="https://www.ug.edu.gh/" target="_blank" className="text-decoration-none text-dark"><strong>University of Ghana</strong></a>, where I studied Humanities,
+                My academic journey began at the <a href="https://www.ug.edu.gh/" target="_blank" className="text-decoration-none text-white"><strong>University of Ghana</strong></a>, where I studied Humanities,
                 focusing on <strong>Geography and French</strong>. While I had an early interest in technology, it was during
                 my time studying <em>Mathématiques et Informatique Appliquées aux Sciences Humaines et Sociales (MIASHS)</em> that I truly
                 began to understand the core concepts of <strong>Programming</strong> and its real-world applications.

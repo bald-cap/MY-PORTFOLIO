@@ -11,7 +11,7 @@ import SQL from "../../public/sql.png"
 const Skills = () => {
 
     return (
-        <section className="container py-5" id="skills">
+        <section className="container py-5 " id="skills">
             <h2 className="text-center mb-4">My Technical Skills</h2>
             <article className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 {/* Golang */}
