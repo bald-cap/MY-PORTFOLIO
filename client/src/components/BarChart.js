@@ -15,13 +15,8 @@ const BarChart = ({ data }) => {
         data.forEach((repo) => {
             Object.keys(repo).forEach((language) => {
                 const frequency = repo[language];
-                // If the language is already in the aggregated data, add the frequency to it
-                if (aggregatedData[language]) {
-                    aggregatedData[language] += frequency;
-                } else {
-                    // Otherwise, initialize it with the current frequency
-                    aggregatedData[language] = frequency;
-                }
+                if (aggregatedData[language]) aggregatedData[language] += frequency;
+                else  aggregatedData[language] = frequency;
             });
         });
 
@@ -80,9 +75,19 @@ const BarChart = ({ data }) => {
     }, [data]);
 
     return (
-        <div className="d-flex justify-content-center">
-            <svg ref={chartRef}></svg>
-        </div>
+        <article className="mb-5">
+            <h4 className="text-center mb-3">Tech Stack Breakdown</h4>
+            <div className="card p-3 shadow">
+                <div className="d-flex justify-content-center">
+                    <svg ref={chartRef}></svg>
+                </div>
+                <p>
+                    The commit frequency chart highlights how consistently I contribute to my projects.
+                    While some of my most active repositories are private, this visual shows that I’m regularly coding, learning, and improving.
+                    My public contributions might be limited in scope, but my overall activity reflects steady progress and hands-on experience in real-world development.
+                </p>
+            </div>
+        </article>
     );
 };
 

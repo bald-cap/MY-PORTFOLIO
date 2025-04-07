@@ -1,11 +1,14 @@
 import get from "@/lib/axiosConfig";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+
 
 import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import BarChart from "@/components/BarChart";
-import LineChart from "@/components/LineChart";
+import CalendarHeatmap from "@/components/CalendarHeatmap";
+import StarsAndForksChart from "@/components/StarsAndForksChart";
 
 const DataAnalysis = () => {
     const [projects, setProjects] = useState([]);
@@ -43,6 +46,7 @@ const DataAnalysis = () => {
                     return aggregateCommitsByDay(commits);
                 })
             );
+            console.log(res.flat())
             setCommits(res.flat())
         } catch (error) {
             setError(error)
@@ -97,20 +101,45 @@ const DataAnalysis = () => {
             <Navbar />
 
             <main>
-                {error && <p className="alert alert-danger">{error}</p>}
+                <section className="container my-5">
 
-                {projects &&
-                    <article className="card" style={{ width: "18rem" }}>
-                        <ul className="list-group list-group-flush">
-                            {projects.map(({ name, id }) => (
-                                <li className="list-group-item" key={id}>{name}</li>
-                            ))}
-                        </ul>
-                    </article>
-                }
+                    {/* Error */}
+                    {error && (
+                        <article className="alert alert-danger text-center" role="alert">
+                            {error}
+                        </article>
+                    )}
 
-                {stack && <BarChart data={stack} />}
-                {commits && <LineChart data={commits}/>}
+                    {projects && (
+                        <>
+                            {/* Project List */}
+                            <article className="mb-5">
+                                <h3 className="mb-3 text-center">My GitHub Repositories</h3>
+                                <section className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                                    {projects.map(({ name, id, html_url }) => (
+                                        <article className="col" key={id}>
+                                            <div className="card h-100 shadow">
+                                                <div className="card-body d-flex align-tiems-center justify-content-center">
+                                                    <Link className="card-title btn btn-outline-dark" href={html_url}>{name}</Link>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    ))}
+                                </section>
+                            </article>
+
+                            {/* Stars and Forks */}
+                            <StarsAndForksChart data={projects} />
+                        </>
+                    )}
+
+                    {/* Stack/Languages Chart */}
+                    {stack && <BarChart data={stack} />}
+
+                    {/* Commit History and Frequency Chart */}
+                    {commits && <CalendarHeatmap data={commits} /> }
+                </section>
+
             </main>
 
             <footer>

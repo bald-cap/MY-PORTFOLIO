@@ -1,24 +1,30 @@
 import axios from "axios";
 
 const API_URL = "https://api.github.com"
-const TOKEN = "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"
 
+// Abstraction of All get requests
 const github = axios.create({
     baseURL: API_URL,
     headers: {
         Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${TOKEN}`
     }
 });
 
+// Making sure to catch all possible errors in try catch
 const handleError = (error) => {
+    // Handling unexpected errors
     if (!axios.isAxiosError(error)) 
         return Promise.reject("Unexpected Error");
 
+    // Handling a failed status error : 400, 500
     if (error.response) return (
         Promise.reject(error.response.data?.messsage || `Error status ${error.response.status}`)
     );
-    else if (error.request) return Promise.reject("No reponse received");
+
+    // Handling 204 status
+    else if (error.request) return Promise.reject("No response received");
+        
+    // Other  errors
     else return Promise.reject(error.messsage);
 }
 

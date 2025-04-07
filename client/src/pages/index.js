@@ -22,19 +22,35 @@ export default function Home() {
 
       <Navbar />
 
-      <main style={{ color: "#161E34" }}>
-        <section className=" rounded p-3 border mx-3">
-          <About />
+      <main>
+        {/* 👇 Hero Hook */}
+        <section
+          className="d-flex align-items-center justify-content-center text-center p-5 bg-dark"
+          style={{
+            minHeight: "80vh",
+            color: "#FEDCC3", // Soft highlight
+          }}
+        >
+          <div>
+            <h1 style={{ fontSize: "3rem", fontWeight: "bold", color: "#FAFEF7" }}>
+              I build digital experiences <br />
+              that people <span style={{ color: "#811D45" }}>*want*</span> to use — and keep using.
+            </h1>
+            <p style={{ fontSize: "1.5rem", marginTop: "1.5rem", color: "#9FBBC3" }}>
+              I&apos;m a software developer passionate about helping businesses, brands, and creators
+              bring their services online in a way that&apos;s elegant, engaging, and efficient.
+            </p>
+          </div>
         </section>
 
-        <section className="border border-info mx-3 rounded">
+        {/* Main Site Content */}
           <Skills />
-        </section>
+          
+          <About />
 
-        <section className="border border-secondary mx-3 rounded">
           <Projects />
-        </section>
       </main>
+
 
       <Contact />
     </>

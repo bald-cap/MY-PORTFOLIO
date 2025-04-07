@@ -8,7 +8,7 @@ import gmail from "../../public/gmail.png"
 const Contact = () => {
 
     return (
-        <footer className="border bg-dark text-white rounded mx-3 mb-3 py-3" >
+        <footer className="border bg-dark text-white py-3" >
 
             <section className="container d-flex justify-content-evenly align-items-center">
                 <article className="row">
@@ -28,7 +28,7 @@ const Contact = () => {
                     <div className="col">
                         <article className="d-flex flex-column align-items-center justify-content-center">
                             <p>My Gitlab</p>
-                            <Link href="https://migitlab.com/michael-kofi.nyanyuie" className="btn btn-outline-light">
+                            <Link href="https://mi-git.univ-tlse2.fr/Michael-kofi.NYANYUIE" className="btn btn-outline-light">
                                 <Image src={gitlab} height={25} width={25} alt="Gitlab" />
                             </Link>
                         </article>
