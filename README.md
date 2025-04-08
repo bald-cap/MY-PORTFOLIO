@@ -2,9 +2,6 @@
 
 This is a personal portfolio project built using **Next.js**, **Bootstrap**, **D3.js**, and **Axios**. It showcases who I am as a developer, my technical stack, my coding activity, and the public projects I’ve worked on. The goal of this project is to present both my journey and my technical skills in a simple, responsive, and visually appealing way.
 
-## Live Demo
-This site can be viewed live on GitHub
-
 ---
 
 ## Tech Stack
@@ -60,6 +57,30 @@ To ensure maintainable and modular code, I created reusable components. This app
 
 ---
 
+## Screenshots (Proof of Work)
+
+Due to deployment issues with hosting on GitHub Pages and Vercel (API errors with 401 and 403 responses), I am providing these screenshots as proof of work for the design and functionality of the project.
+
+### Desktop View (Data Analysis Page)
+![Data Analysis Page - Desktop](screenshots/da_desk.png)
+
+### Desktop View (Data Analysis Page - Alternate View)
+![Data Analysis Page - Mobile Alternate](screenshots/da_mobile1.png)
+
+### Mobile View (Data Analysis Page)
+![Data Analysis Page - Mobile](screenshots/da_mobile.png)
+
+### Desktop View (Landing Page)
+![Landing Page - Desktop](screenshots/hp_desk.png)
+
+### Desktop View (Landing Page - Alternate View)
+![Landing Page Projects - Desktop Alternate](screenshots/hp_desk1.png)
+
+### Mobile View (Landing Page)
+![Landing Page Navbar - Mobile](screenshots/hp_mobile.png)
+
+---
+
 ## File Structure
 ```txt
 
@@ -75,7 +96,7 @@ To ensure maintainable and modular code, I created reusable components. This app
 ## How to Run
 
 1. Clone this repo  
-   `git clone https://github.com/your-username/your-repo-name.git`
+   `git clone https://github.com/bald-cap/my-portfolio.git`
 
 2. Navigate into the project folder  
    `cd client`
