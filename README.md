@@ -50,6 +50,16 @@ Provides an analysis of my GitHub profile through dynamic charts:
 
 ---
 
+## Separation of Concerns & Component Structure
+
+To ensure maintainable and modular code, I created reusable components. This approach helps in:
+
+- **Separation of Concerns**: Components are responsible for their specific task, making the code easier to manage.
+- **Code Reusability**: With the separation of concerns, components can be reused across different parts of the site.
+- **Reduced Complexity**: By splitting the code into smaller components, the amount of code in each component is reduced, leading to improved readability and easier debugging.
+
+---
+
 ## File Structure
 ```txt
 
