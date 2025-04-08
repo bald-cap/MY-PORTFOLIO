@@ -8,9 +8,9 @@ const StarsAndForksChart = ({ data }) => {
         const svg = d3.select(chartRef.current);
         svg.selectAll("*").remove(); // Clear previous render
 
-        const width = 600;
-        const height = 400;
         const margin = { top: 20, right: 20, bottom: 40, left: 40 };
+        const width = window.innerWidth < 768 ? window.innerWidth - margin.left - margin.right : 600; // Responsive width
+        const height = 400;
 
         // Set up the scale for the x-axis (projects)
         const x = d3
@@ -28,8 +28,10 @@ const StarsAndForksChart = ({ data }) => {
 
         // Create SVG container
         svg
-            .attr("width", width)
-            .attr("height", height);
+            .attr("width", "100%")
+            .attr("height", height)
+            .attr("viewBox", `0 0 ${width} ${height}`)
+            .attr("preserveAspectRatio", "xMidYMid meet"); // Preserve aspect ratio
 
         // Line function for stars
         const starLine = d3
@@ -101,8 +103,8 @@ const StarsAndForksChart = ({ data }) => {
     return (
         <article className="mb-5">
             <h4 className="text-center mb-3">Stars and Forks</h4>
-            <div className="card p-3 shadow">
-                <div className="d-flex justify-content-center">
+            <div className="card p-3">
+                <div className="d-flex justify-content-center" style={{ overflowX: "auto", width: "100%" }}>
                     <svg ref={chartRef}></svg>
                 </div>
                 <p>

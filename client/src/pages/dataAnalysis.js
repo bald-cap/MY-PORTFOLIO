@@ -102,7 +102,6 @@ const DataAnalysis = () => {
 
             <main>
                 <section className="container my-5">
-
                     {/* Error */}
                     {error && (
                         <article className="alert alert-danger text-center" role="alert">
@@ -118,10 +117,10 @@ const DataAnalysis = () => {
                                 <section className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                                     {projects.map(({ name, id, html_url }) => (
                                         <article className="col" key={id}>
-                                            <div className="card h-100 shadow">
-                                                <div className="card-body d-flex align-tiems-center justify-content-center">
+                                            <div className="text-center">
+                                                {/* <div className="card-body d-flex align-items-center justify-content-center"> */}
                                                     <Link className="card-title btn btn-outline-dark" href={html_url}>{name}</Link>
-                                                </div>
+                                                {/* </div> */}
                                             </div>
                                         </article>
                                     ))}
@@ -137,14 +136,11 @@ const DataAnalysis = () => {
                     {stack && <BarChart data={stack} />}
 
                     {/* Commit History and Frequency Chart */}
-                    {commits && <CalendarHeatmap data={commits} /> }
+                    {commits && <CalendarHeatmap data={commits} />}
                 </section>
-
             </main>
 
-            <footer>
-                <Contact />
-            </footer>
+            <Contact />
         </>
     )
 };

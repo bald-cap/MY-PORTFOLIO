@@ -25,30 +25,36 @@ export default function Home() {
       <main>
         {/* 👇 Hero Hook */}
         <section
-          className="d-flex align-items-center justify-content-center text-center p-5 bg-dark"
-          style={{
-            minHeight: "80vh",
-            color: "#FEDCC3", // Soft highlight
-          }}
+          className="d-flex align-items-center justify-content-center text-center p-4 bg-dark"
+          style={{ minHeight: "80vh", color: "#FEDCC3" }}
         >
-          <div>
-            <h1 style={{ fontSize: "3rem", fontWeight: "bold", color: "#FAFEF7" }}>
-              I build digital experiences <br />
-              that people <span style={{ color: "#811D45" }}>*want*</span> to use — and keep using.
-            </h1>
-            <p style={{ fontSize: "1.5rem", marginTop: "1.5rem", color: "#9FBBC3" }}>
-              I&apos;m a software developer passionate about helping businesses, brands, and creators
-              bring their services online in a way that&apos;s elegant, engaging, and efficient.
-            </p>
-          </div>
+          <article className="container">
+            <section className="row justify-content-center">
+              <article className="col-12 col-md-10 col-lg-8">
+                <h1
+                  className="fw-bold"
+                  style={{ fontSize: "clamp(2rem, 6vw, 3rem)", color: "#FAFEF7" }}
+                >
+                  I build digital experiences <br />
+                  that people{" "}
+                  <span style={{ color: "#811D45", fontStyle: "italic" }}>*want*</span> to use — and keep using.
+                </h1>
+                <p
+                  className="mt-4"
+                  style={{ fontSize: "clamp(1rem, 3.5vw, 1.5rem)", color: "#9FBBC3" }}
+                >
+                  I&apos;m a software developer passionate about helping businesses, brands, and creators
+                  bring their services online in a way that&apos;s elegant, engaging, and efficient.
+                </p>
+              </article>
+            </section>
+          </article>
         </section>
 
         {/* Main Site Content */}
-          <Skills />
-          
-          <About />
-
-          <Projects />
+        <Skills />
+        <About />
+        <Projects />
       </main>
 
 

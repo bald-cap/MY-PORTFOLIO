@@ -15,29 +15,24 @@ const Projects = () => {
             style={{ backgroundColor: "#FFFFFF" }}
         >
             <article className="container my-5" id="projects">
-                <h2 className="mb-4">Projects</h2>
+                <h2 className="mb-4 text-center">Projects</h2>
 
                 <section className="row g-4">
 
                     {/* STATS SHS */}
-                    <article className="col-12 col-md-6">
-                        <section className="card h-100 shadow">
+                    <article className="col-12 col-sm-6 col-md-4">
+                        <section className="card h-100 ">
                             <h5 className="card-header text-center">COVID ANALYSIS</h5>
                             <article className="d-flex align-items-center justify-content-center">
                                 <Image
-                                    src={StatsSHSImage}
-                                    alt="STATS SHS"
-                                    className="card-img-top"
-                                    width={300}
-                                    height={200}
-                                    style={{width : "fit-content"}}
+                                    src={StatsSHSImage} alt="STATS SHS" className="card-img-top"
+                                    width={300} height={200}
+                                    style={{ width: "100%", maxWidth: "300px", height: "auto" }}
                                 />
                             </article>
                             <article className="card-body">
                                 <p className="card-text">
-                                    A project that highlights my proficiency in R and data analysis,
-                                    focusing on multi-dimensional data. Statistical analysis techniques
-                                    were applied to analyze and visualize data meaningfully.
+                                    A project that highlights my proficiency in R and data analysis, focusing on multi-dimensional data. Statistical analysis techniques were applied to analyze and visualize data meaningfully.
                                 </p>
                             </article>
                             <article className="card-footer text-muted">
@@ -49,24 +44,19 @@ const Projects = () => {
                     </article>
 
                     {/* NETWORKING PROJECT */}
-                    <article className="col-12 col-md-6">
-                        <section className="card h-100 shadow">
+                    <article className="col-12 col-sm-6 col-md-4">
+                        <section className="card h-100 ">
                             <h5 className="card-header text-center">CHAT ENCRYPTION</h5>
                             <article className="d-flex align-items-center justify-content-center">
                                 <Image
-                                    src={NetworkingImage}
-                                    alt="PROJET REZO"
-                                    className="card-img-top"
-                                    width={300}
-                                    height={200}
-                                    style={{ width: "fit-content" }}
+                                    src={NetworkingImage} alt="PROJET REZO" className="card-img-top"
+                                    width={300} height={200}
+                                    style={{ width: "100%", maxWidth: "300px", height: "auto" }}
                                 />
                             </article>
-
                             <article className="card-body">
                                 <p className="card-text">
-                                    A communication system to written in C where messages are broadcasted to all conneceted users
-                                    using the TCP/IP protocol.
+                                    A communication system written in C where messages are broadcasted to all connected users using the TCP/IP protocol.
                                 </p>
                             </article>
                             <article className="card-footer text-muted">
@@ -78,24 +68,19 @@ const Projects = () => {
                     </article>
 
                     {/* LEAGUE OF STONES */}
-                    <article className="col-12 col-md-6">
-                        <section className="card h-100 shadow">
+                    <article className="col-12 col-sm-6 col-md-4">
+                        <section className="card h-100 ">
                             <h5 className="card-header text-center">LEAGUE OF STONES</h5>
                             <article className="d-flex align-items-center justify-content-center">
                                 <Image
-                                    src={LeagueOfStonesImage}
-                                    alt="LEAGUE OF STONES"
-                                    className="card-img-top"
-                                    width={300}
-                                    height={200}
-                                    style={{width : "fit-content"}}
+                                    src={LeagueOfStonesImage} alt="LEAGUE OF STONES"
+                                    className="card-img-top" width={300} height={200}
+                                    style={{ width: "100%", maxWidth: "300px", height: "auto" }}
                                 />
                             </article>
-
                             <article className="card-body">
                                 <p className="card-text">
-                                    A responsive web game built in React, using elements from the League of Legends universe.
-                                    Players are tasked with finding and submitting photos of places on campus to familiarize themselves with the environment.
+                                    A responsive web game built in React, using elements from the League of Legends universe. Players are tasked with finding and submitting photos of places on campus to familiarize themselves with the environment.
                                 </p>
                             </article>
                             <article className="card-footer text-muted">
@@ -107,20 +92,16 @@ const Projects = () => {
                     </article>
 
                     {/* CAMPUS EXPLORER */}
-                    <article className="col-12 col-md-6">
-                        <section className="card h-100 shadow">
+                    <article className="col-12 col-sm-6 col-md-4">
+                        <section className="card h-100 ">
                             <h5 className="card-header text-center">CAMPUS EXPLORER</h5>
                             <article className="d-flex align-items-center justify-content-center">
                                 <Image
-                                    src={CampusExplorerImage}
-                                    alt="CAMPUS EXPLORER"
-                                    className="card-img-top"
-                                    width={300}
-                                    height={200}
-                                    style={{ width: "fit-content" }}
+                                    src={CampusExplorerImage} alt="CAMPUS EXPLORER" className="card-img-top"
+                                    width={300} height={200}
+                                    style={{ width: "100%", maxWidth: "300px", height: "auto" }}
                                 />
                             </article>
-
                             <article className="card-body">
                                 <p className="card-text">
                                     A PHP-based project designed to help students navigate campus using a responsive, interactive website.
@@ -137,6 +118,7 @@ const Projects = () => {
                 </section>
             </article>
         </section>
+
             
     )
 };

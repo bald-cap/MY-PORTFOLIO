@@ -8,7 +8,7 @@ const CalendarHeatmap = ({ data }) => {
         const svg = d3.select(chartRef.current);
         svg.selectAll("*").remove(); // Clear previous render
 
-        const width = 1000;
+        const width = window.innerWidth < 768 ? window.innerWidth - 40 : 1000; // Mobile screen adjustment
         const height = 150;
         const cellSize = 17;
 
@@ -27,8 +27,10 @@ const CalendarHeatmap = ({ data }) => {
         const days = d3.timeDays(startDate, endDate);
 
         const g = svg
-            .attr("width", width)
+            .attr("width", "100%")
             .attr("height", height)
+            .attr("viewBox", `0 0 ${width} ${height}`)  // ViewBox to scale the chart with preserveAspectRatio
+            .attr("preserveAspectRatio", "xMidYMid meet")  // Maintain aspect ratio
             .append("g")
             .attr("transform", `translate(40,20)`);
 
@@ -62,15 +64,18 @@ const CalendarHeatmap = ({ data }) => {
             .attr("y", -5)
             .text(d => d3.timeFormat("%b")(d))
             .style("fill", "#161E34")
-            .style("font-size", "12px");
+            .style("font-size", window.innerWidth < 768 ? "10px" : "12px") // Reduce font size for smaller screens
+            .style("text-anchor", "middle")
+            .style("transform", window.innerWidth < 768 ? "rotate(45deg)" : "none"); // Rotate labels on smaller screens
 
     }, [data]);
 
     return (
         <article className="mb-5">
             <h4 className="text-center mb-3">Commit Frequency</h4>
-            <div className="card p-3 shadow">
-                <div className="d-flex justify-content-center">
+            <div className="card p-3">
+                {/* Scrollable container */}
+                <div className="d-flex justify-content-center" style={{ overflowX: "auto", width: "100%" }}>
                     <svg ref={chartRef}></svg>
                 </div>
                 <p>
@@ -78,7 +83,7 @@ const CalendarHeatmap = ({ data }) => {
                     My primary tools include Python, JavaScript, HTML, and CSS—languages I’ve used across personal, academic, and collaborative projects.
                     Whether on the front end or back end, I’m comfortable working across the full stack to build responsive, functional, and user-friendly applications.
                 </p>
-            </div >
+            </div>
         </article>
     );
 };

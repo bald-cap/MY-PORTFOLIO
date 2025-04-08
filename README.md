@@ -3,7 +3,7 @@
 This is a personal portfolio project built using **Next.js**, **Bootstrap**, **D3.js**, and **Axios**. It showcases who I am as a developer, my technical stack, my coding activity, and the public projects I’ve worked on. The goal of this project is to present both my journey and my technical skills in a simple, responsive, and visually appealing way.
 
 ## Live Demo
-[Insert deployed site URL here]
+This site can be viewed live on GitHub
 
 ---
 
@@ -51,15 +51,15 @@ Provides an analysis of my GitHub profile through dynamic charts:
 ---
 
 ## File Structure
+```txt
 
-.
-├── public/               # Static files
+├── public/               # Photos used
 ├── src/
 │   ├── components/       # Reusable components
 │   ├── lib/              # Axios configuration and utility functions
 │   ├── pages/            # Next.js page components (Landing & Data Analysis)
 │   └── styles/           # CSS files
-
+```
 ---
 
 ## How to Run
@@ -68,7 +68,7 @@ Provides an analysis of my GitHub profile through dynamic charts:
    `git clone https://github.com/your-username/your-repo-name.git`
 
 2. Navigate into the project folder  
-   `cd your-repo-name`
+   `cd client`
 
 3. Install dependencies  
    `npm install`

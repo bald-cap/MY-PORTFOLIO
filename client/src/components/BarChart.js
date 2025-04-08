@@ -7,7 +7,7 @@ const BarChart = ({ data }) => {
     const chartRef = useRef();
 
     useEffect(() => {
-       console.log(data)
+        console.log(data);
 
         // Flatten the data and aggregate language frequencies
         const aggregatedData = {};
@@ -16,7 +16,7 @@ const BarChart = ({ data }) => {
             Object.keys(repo).forEach((language) => {
                 const frequency = repo[language];
                 if (aggregatedData[language]) aggregatedData[language] += frequency;
-                else  aggregatedData[language] = frequency;
+                else aggregatedData[language] = frequency;
             });
         });
 
@@ -26,25 +26,26 @@ const BarChart = ({ data }) => {
             value: aggregatedData[language],
         }));
 
-
         const svg = d3.select(chartRef.current);
         svg.selectAll("*").remove(); // Clear previous render
 
-        const width = 400;
-        const height = 500;
         const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+        const width = window.innerWidth < 768 ? window.innerWidth - margin.left - margin.right : 600;
+        const height = 500;
 
         svg
-            .attr("width", width)
+            .attr("width", "100%")
             .attr("height", height)
+            .attr("viewBox", `0 0 ${width} ${height}`)
+            .attr("preserveAspectRatio", "xMidYMid meet") // Preserve aspect ratio
             .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
         const x = d3
             .scaleBand()
             .domain(chartData.map((d) => d.label))
-            .range([margin.left, width - margin.right])
-            .padding(0.1);
+            .range([0, width - margin.left - margin.right])
+            .padding(0.4);
 
         const y = d3
             .scaleLinear()
@@ -52,6 +53,7 @@ const BarChart = ({ data }) => {
             .nice()
             .range([height - margin.bottom, margin.top]);
 
+        // Setting up each bar
         svg
             .append("g")
             .attr("fill", "#0d6efd")
@@ -63,11 +65,13 @@ const BarChart = ({ data }) => {
             .attr("height", (d) => y(0) - y(d.value))
             .attr("width", x.bandwidth());
 
+        // Setting up the x-axis
         svg
             .append("g")
             .attr("transform", `translate(0,${height - margin.bottom})`)
             .call(d3.axisBottom(x));
 
+        // Setting up the y-axis
         svg
             .append("g")
             .attr("transform", `translate(${margin.left},0)`)
@@ -77,8 +81,8 @@ const BarChart = ({ data }) => {
     return (
         <article className="mb-5">
             <h4 className="text-center mb-3">Tech Stack Breakdown</h4>
-            <div className="card p-3 shadow">
-                <div className="d-flex justify-content-center">
+            <div className="card p-3">
+                <div className="d-flex justify-content-center" style={{ overflowX: "auto", width: "100%" }}>
                     <svg ref={chartRef}></svg>
                 </div>
                 <p>

@@ -1,12 +1,14 @@
 import axios from "axios";
 
 const API_URL = "https://api.github.com"
+const TOKEN = "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"
 
-// Abstraction of All get requests
+// Abstraction of All API calls
 const github = axios.create({
     baseURL: API_URL,
     headers: {
         Accept: "application/vnd.github+json",
+        Authorization: `Bearer ${TOKEN}`
     }
 });
 
