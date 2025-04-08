@@ -8,7 +8,7 @@ const github = axios.create({
     baseURL: API_URL,
     headers: {
         Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${TOKEN}`
+        Authorization: `${TOKEN}`
     }
 });
 
