@@ -107,6 +107,8 @@ Due to deployment issues with hosting on GitHub Pages and Vercel (API errors wit
 4. Start the development server  
    `npm run dev`
 
+Also hosted here --> [Portfolio Page](https://my-portfolio-sage-tau-96.vercel.app/)
+
 ---
 
 ## Contact Info

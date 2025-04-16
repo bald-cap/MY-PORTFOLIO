@@ -46,7 +46,7 @@ const Projects = () => {
                     {/* NETWORKING PROJECT */}
                     <article className="col-12 col-sm-6 col-md-4">
                         <section className="card h-100 ">
-                            <h5 className="card-header text-center">CHAT ENCRYPTION</h5>
+                            <h5 className="card-header text-center">SIMPLE CHAT APP</h5>
                             <article className="d-flex align-items-center justify-content-center">
                                 <Image
                                     src={NetworkingImage} alt="PROJET REZO" className="card-img-top"
